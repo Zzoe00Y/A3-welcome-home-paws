@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paws & Outcomes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+<div class="page-shell">
+    <header class="hero-card">
+        <div>
+            <p class="eyebrow">CSC316 · Interactive Visualization</p>
+            <h1>Welcome Home, Paws</h1>
+            <p class="subtitle">
+                Explore how age, animal type, and shelter outcomes relate for cats and dogs at the Austin Animal Center in 2025.
+            </p>
+        </div>
+        <div class="hero-icons" aria-hidden="true">
+            <div class="pet-bubble cat-bubble">🐱</div>
+            <div class="pet-bubble dog-bubble">🐶</div>
+            <div class="pet-bubble paw-bubble">🐾</div>
+        </div>
+    </header>
+
+    <section class="controls-card">
+        <div class="control-group segmented" id="animal-toggle">
+            <span class="control-label">Animal type</span>
+            <button class="segment active" data-value="All">All</button>
+            <button class="segment" data-value="Dog">Dogs</button>
+            <button class="segment" data-value="Cat">Cats</button>
+        </div>
+
+        <div class="control-group segmented" id="outcome-toggle">
+            <span class="control-label">Outcome focus</span>
+            <button class="segment active" data-value="All">All</button>
+            <button class="segment" data-value="Adoption">Adopted</button>
+            <button class="segment" data-value="Not Adopted">Not Adopted</button>
+        </div>
+
+        <div class="control-group slider-group">
+            <label class="control-label" for="ageRange">Max age: <span id="ageValue">20</span> years</label>
+            <input type="range" id="ageRange" min="0.5" max="20" step="0.5" value="20" />
+        </div>
+    </section>
+
+    <section class="dashboard-grid">
+        <div class="viz-card">
+            <div class="viz-header">
+                <div>
+                    <h2>Age vs. Outcome</h2>
+                    <p>Each cat or dog is a clickable pet icon. Hover for quick info, click for full details.</p>
+                </div>
+                <div class="legend">
+                    <span><span class="legend-swatch dog"></span> Dog</span>
+                    <span><span class="legend-swatch cat"></span> Cat</span>
+                </div>
+            </div>
+
+            <div id="chart"></div>
+            <div class="axis-caption">Older pets appear further to the right. Outcomes are grouped vertically.</div>
+        </div>
+
+        <aside class="info-column">
+            <div class="summary-card">
+                <h3>Filtered summary</h3>
+                <div class="summary-grid">
+                    <div class="stat-pill">
+                        <span class="stat-label">Pets shown</span>
+                        <span class="stat-value" id="stat-total">0</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-label">Adoption rate</span>
+                        <span class="stat-value" id="stat-adoption">0%</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-label">Dogs</span>
+                        <span class="stat-value" id="stat-dogs">0</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-label">Cats</span>
+                        <span class="stat-value" id="stat-cats">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-card" id="detailCard">
+                <div class="detail-hero">
+                    <div class="detail-emoji" id="detailEmoji">🐾</div>
+                    <div>
+                        <h3 id="detailTitle">Click a pet icon</h3>
+                        <p id="detailSubtitle">Its shelter record will appear here.</p>
+                    </div>
+                </div>
+                <div class="detail-list" id="detailList">
+                    <div class="detail-row"><span>Name</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Animal Type</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Age</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Outcome</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Breed</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Color</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Sex</span><strong>—</strong></div>
+                    <div class="detail-row"><span>Date</span><strong>—</strong></div>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="insights-card" style="background: rgba(255, 255, 255, 0.9); border-radius: 24px; padding: 32px; margin-top: 24px; box-shadow: 0 14px 38px rgba(190, 166, 214, 0.18);">
+        <h2 style="margin-top: 0; color: #5b5269; font-size: 1.5rem; display: flex; align-items: center; gap: 8px;">
+            <span>💡</span> The Story Behind the Data
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+            <div style="background: #fff0f5; padding: 24px; border-radius: 16px; border: 1px solid #ffe3ec;">
+                <h3 style="color: #b25d7b; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">📊 What Influences Adoption Rates?</h3>
+                <p style="color: #6d637a; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                    The data clearly shows that <strong>age</strong> is the most critical factor in a pet's outcome. Kittens and puppies (under 1 year old) have extremely high adoption rates and leave the shelter quickly. In contrast, adult and senior pets often wait much longer and face a higher risk of euthanasia. Additionally, specific <strong>breeds and colors</strong> can heavily influence initial adoption choices.
+                </p>
+            </div>
+
+            <div style="background: #eaf4ff; padding: 24px; border-radius: 16px; border: 1px solid #dcecff;">
+                <h3 style="color: #4a88c7; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">❤️ Why Choose to Adopt?</h3>
+                <p style="color: #6d637a; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                    Most shelter pets are healthy, loving, and have already been spayed/neutered and vaccinated by professionals. Choosing to adopt not only brings a loyal family member into your home, but it also directly <strong>saves a life</strong> while freeing up vital shelter space and community resources for other stray animals.
+                </p>
+            </div>
+
+            <div style="background: #fff9e6; padding: 24px; border-radius: 16px; border: 1px solid #ffeed4;">
+                <h3 style="color: #d4a017; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">🏡 Adopt, Don't Shop</h3>
+                <p style="color: #6d637a; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                    Commercial breeding facilities often struggle with poor living conditions and overbreeding. By adopting, we refuse to fund unethical pet breeding industries. Every shelter animal brought home proves that love isn't about pedigree—they are equally deserving of a loving family.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-note">
+        Data source: Austin Animal Center Outcomes. Built with D3.js.
+    </footer>
+</div>
+
+<div id="tooltip" class="tooltip hidden"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
