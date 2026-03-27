@@ -309,13 +309,13 @@ function drawTrendChart(data) {
     if (!trendRoot) return;
 
     const monthly = computeMonthlyData(data);
-    yTrendScale.domain([0, 0.8]);
+    yTrendScale.domain([0, 1]);
     trendRoot.selectAll("*").remove();
 
     const grid = trendRoot.append("g").attr("class", "trend-grid");
     grid.call(
         d3.axisLeft(yTrendScale)
-            .tickValues([0, 0.2, 0.4, 0.6, 0.8])
+            .tickValues([0, 0.2, 0.4, 0.6, 0.8, 1])
             .tickSize(-trendInnerWidth)
             .tickFormat("")
     );
@@ -327,7 +327,7 @@ function drawTrendChart(data) {
     const yAxis = trendRoot.append("g")
         .call(
             d3.axisLeft(yTrendScale)
-                .tickValues([0, 0.2, 0.4, 0.6, 0.8])
+                .tickValues([0, 0.2, 0.4, 0.6, 0.8, 1])
                 .tickFormat(d => `${Math.round(d * 100)}%`)
         );
 
