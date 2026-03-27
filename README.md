@@ -3,7 +3,7 @@
 An interactive data visualization exploring adoption patterns for cats and dogs at the Austin Animal Center in 2024.
 
 ## 🌐 Live Demo
-👉 https://zzoe00y.github.io/A3-welcome-home-paws/
+https://zzoe00y.github.io/A3-welcome-home-paws/
 
 ---
 
