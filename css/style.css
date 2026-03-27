@@ -362,3 +362,32 @@ h1 {
         justify-content: flex-start;
     }
 }
+.trend-card {
+    margin-top: 18px;
+    border-radius: 28px;
+    padding: 18px 20px;
+}
+
+#trendChart {
+    width: 100%;
+    min-height: 190px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,245,250,0.95));
+    overflow: hidden;
+    border: 1px dashed #eadff4;
+}
+
+.trend-grid line {
+    stroke: #e9dfef;
+}
+
+.trend-grid path {
+    stroke: none;
+}
+.month-hitbox {
+    rx: 10px;
+}
+
+.month-hitbox:hover {
+    fill: rgba(255, 111, 161, 0.08);
+}

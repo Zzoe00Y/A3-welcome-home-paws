@@ -16,7 +16,7 @@
             <p class="eyebrow">CSC316 · Interactive Visualization</p>
             <h1>Welcome Home, Paws</h1>
             <p class="subtitle">
-                Explore how age, animal type, and shelter outcomes relate for cats and dogs at the Austin Animal Center in 2025.
+                Explore monthly adoption trends and how age, animal type, and shelter outcomes connect for cats and dogs at the Austin Animal Center in 2024.
             </p>
         </div>
         <div class="hero-icons" aria-hidden="true">
@@ -47,6 +47,17 @@
         </div>
     </section>
 
+    <!--Monthly Trend Chart -->
+    <section class="viz-card" style="margin-top:18px;">
+        <div class="viz-header">
+            <div>
+                <h2>Monthly Adoption Trend (2024)</h2>
+                <p>Click a month to filter pets above.</p>
+            </div>
+            <button id="clearMonth" class="segment">Clear Month</button>
+        </div>
+        <div id="trendChart"></div>
+    </section>
     <section class="dashboard-grid">
         <div class="viz-card">
             <div class="viz-header">
@@ -109,6 +120,8 @@
         </aside>
     </section>
 
+
+
     <section class="insights-card" style="background: rgba(255, 255, 255, 0.9); border-radius: 24px; padding: 32px; margin-top: 24px; box-shadow: 0 14px 38px rgba(190, 166, 214, 0.18);">
         <h2 style="margin-top: 0; color: #5b5269; font-size: 1.5rem; display: flex; align-items: center; gap: 8px;">
             <span>💡</span> The Story Behind the Data
@@ -116,16 +129,16 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
             <div style="background: #fff0f5; padding: 24px; border-radius: 16px; border: 1px solid #ffe3ec;">
-                <h3 style="color: #b25d7b; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">📊 What Influences Adoption Rates?</h3>
+                <h3 style="color: #b25d7b; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">📊 Age Matters Most</h3>
                 <p style="color: #6d637a; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                    The data clearly shows that <strong>age</strong> is the most critical factor in a pet's outcome. Kittens and puppies (under 1 year old) have extremely high adoption rates and leave the shelter quickly. In contrast, adult and senior pets often wait much longer and face a higher risk of euthanasia. Additionally, specific <strong>breeds and colors</strong> can heavily influence initial adoption choices.
+                    Across the dataset, age is the strongest visual signal linked to outcome. Younger pets are far more likely to be adopted, while older animals are distributed across a wider range of outcomes. This suggests that time, age, and adoptability are closely connected in shelter decision paths.
                 </p>
             </div>
 
             <div style="background: #eaf4ff; padding: 24px; border-radius: 16px; border: 1px solid #dcecff;">
-                <h3 style="color: #4a88c7; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">❤️ Why Choose to Adopt?</h3>
+                <h3 style="color: #4a88c7; margin-top: 0; font-size: 1.1rem; margin-bottom: 12px;">📅 Adoption Changes Over Time</h3>
                 <p style="color: #6d637a; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                    Most shelter pets are healthy, loving, and have already been spayed/neutered and vaccinated by professionals. Choosing to adopt not only brings a loyal family member into your home, but it also directly <strong>saves a life</strong> while freeing up vital shelter space and community resources for other stray animals.
+                    The monthly trend shows that adoption success is not completely constant throughout the year. Even when adoption remains the dominant outcome, some months stand out with stronger rates than others. Viewing the data month by month helps reveal how seasonal timing shapes the larger shelter story.
                 </p>
             </div>
 
